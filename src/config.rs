@@ -1,5 +1,7 @@
 use std::env::var;
 
+use crate::vpn::protocol::Protocol;
+
 pub struct Config {
     pub surfshark_enabled: bool,
     pub purevpn_enabled: bool,
@@ -15,6 +17,18 @@ impl Config {
             surfshark_enabled: var("SURFSHARK_USER").is_ok(),
             purevpn_enabled: var("PUREVPN_USER").is_ok(),
         }
+    }
+
+    pub fn get_protocol() -> Option<Protocol> {
+        if let Ok(p) = var("PROTOCOL") {
+            Some(Protocol::from(p))
+        } else {
+            None
+        }
+    }
+
+    pub fn get_provider() -> Option<String> {
+        var("PROVIDER").ok()
     }
     pub fn get_surfshark() -> (String, String) {
         (

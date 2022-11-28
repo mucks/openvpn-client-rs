@@ -8,9 +8,9 @@ edition = "2021"
 [dependencies]
 anyhow = "1"
 zip = "0.6.3"
-reqwest = { version = "0.11", features = ["json"] }
-async-trait = "0.1"
-tokio = { version = "1.22", features = ["macros", "rt", "rt-multi-thread"] }
+tokio = { version = "1.22", features = ["process"] }
 dotenvy = "0.15.6"
 fs_extra = "1.2"
 uuid = { version = "1.2", features = ["v4"] }
+actix-web = "4"
+awc = { version = "3", features = ["rustls"] }
