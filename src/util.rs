@@ -22,6 +22,7 @@ pub async fn download_and_extract_zip(url: &str, out_path: &str) -> Result<()> {
         .await
         .map_err(|e| anyhow!("{}", e))?
         .body()
+        .limit(100 * 1024_usize.pow(2))
         .await
         .map_err(|e| anyhow!("{}", e))?;
 

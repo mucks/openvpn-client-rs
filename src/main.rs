@@ -28,6 +28,7 @@ async fn run() -> Result<()> {
     let mut vpn_client = VpnClient::default();
     if let Some(vpn) = vpn_pool.get_random() {
         vpn_client.connect_to(&vpn).await?;
+        vpn_client.wait().await?;
     } else {
         return Err(anyhow!("Could not find vpn with the configurations in env"));
     }

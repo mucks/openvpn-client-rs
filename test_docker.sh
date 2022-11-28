@@ -2,7 +2,7 @@
 
 docker build -t openvpn_client_rs .
 
-docker run --rm \
+docker run -it --rm \
 	--name openvpn_client_rs \
 	--cap-add=NET_ADMIN \
 	--device /dev/net/tun \

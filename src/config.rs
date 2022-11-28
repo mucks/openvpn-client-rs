@@ -5,6 +5,7 @@ use crate::vpn::protocol::Protocol;
 pub struct Config {
     pub surfshark_enabled: bool,
     pub purevpn_enabled: bool,
+    pub nordvpn_enabled: bool,
 }
 
 fn env_expect(s: &str) -> String {
@@ -16,6 +17,7 @@ impl Config {
         Self {
             surfshark_enabled: var("SURFSHARK_USER").is_ok(),
             purevpn_enabled: var("PUREVPN_USER").is_ok(),
+            nordvpn_enabled: var("NORDVPN_USER").is_ok(),
         }
     }
 
@@ -38,5 +40,8 @@ impl Config {
     }
     pub fn get_purevpn() -> (String, String) {
         (env_expect("PUREVPN_USER"), env_expect("PUREVPN_PASSWORD"))
+    }
+    pub fn get_nordvpn() -> (String, String) {
+        (env_expect("NORDVPN_USER"), env_expect("NORDVPN_PASSWORD"))
     }
 }
